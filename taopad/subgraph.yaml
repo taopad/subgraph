@@ -17,14 +17,6 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - AddToBlacklist
-        - Approval
-        - Claim
-        - Distribute
-        - OptIn
-        - OptOut
-        - OwnershipTransferred
-        - RemoveFromBlacklist
-        - Sweep
         - Transfer
       abis:
         - name: Taopad
@@ -32,22 +24,6 @@ dataSources:
       eventHandlers:
         - event: AddToBlacklist(address)
           handler: handleAddToBlacklist
-        - event: Approval(indexed address,indexed address,uint256)
-          handler: handleApproval
-        - event: Claim(indexed address,indexed address,uint256)
-          handler: handleClaim
-        - event: Distribute(indexed address,uint256)
-          handler: handleDistribute
-        - event: OptIn(address)
-          handler: handleOptIn
-        - event: OptOut(address)
-          handler: handleOptOut
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
-        - event: RemoveFromBlacklist(address)
-          handler: handleRemoveFromBlacklist
-        - event: Sweep(indexed address,indexed address,uint256)
-          handler: handleSweep
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
       file: ./src/taopad.ts
