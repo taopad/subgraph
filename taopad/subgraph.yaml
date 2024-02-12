@@ -1,0 +1,53 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Taopad
+    network: mainnet
+    source:
+      address: "0x5483DC6abDA5F094865120B2D251b5744fc2ECB5"
+      abi: Taopad
+      startBlock: 18786171
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AddToBlacklist
+        - Approval
+        - Claim
+        - Distribute
+        - OptIn
+        - OptOut
+        - OwnershipTransferred
+        - RemoveFromBlacklist
+        - Sweep
+        - Transfer
+      abis:
+        - name: Taopad
+          file: ./abis/Taopad.json
+      eventHandlers:
+        - event: AddToBlacklist(address)
+          handler: handleAddToBlacklist
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: Claim(indexed address,indexed address,uint256)
+          handler: handleClaim
+        - event: Distribute(indexed address,uint256)
+          handler: handleDistribute
+        - event: OptIn(address)
+          handler: handleOptIn
+        - event: OptOut(address)
+          handler: handleOptOut
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: RemoveFromBlacklist(address)
+          handler: handleRemoveFromBlacklist
+        - event: Sweep(indexed address,indexed address,uint256)
+          handler: handleSweep
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/taopad.ts
