@@ -10,10 +10,11 @@ const verify = async () => {
 
         const { balance, isBlacklisted } = await getHolderInfo(block.number, holder.address)
 
+        console.log({ balance, isBlacklisted })
+        console.log(holder)
+
         if (balance !== holder.balance || isBlacklisted != holder.isBlacklisted) {
-            console.log({ balance, isBlacklisted })
-            console.log(holder)
-            throw new Error()
+            throw new Error("mismatch")
         }
     }
 }
