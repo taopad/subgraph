@@ -35,12 +35,14 @@ export function handleTransfer(event: TransferEvent): void {
     entityTo.isBlacklisted = false
   }
 
-  entityTo.balance = entityTo.balance.plus(event.params.value)
+  if (entityFrom.address != entityTo.address) {
+    entityTo.balance = entityTo.balance.plus(event.params.value)
 
-  if (entityFrom.balance.lt(event.params.value)) {
-    entityFrom.balance = BigInt.fromI32(0)
-  } else {
-    entityFrom.balance = entityFrom.balance.minus(event.params.value)
+    if (entityFrom.balance.lt(event.params.value)) {
+      entityFrom.balance = BigInt.fromI32(0)
+    } else {
+      entityFrom.balance = entityFrom.balance.minus(event.params.value)
+    }
   }
 
   entityFrom.save()
