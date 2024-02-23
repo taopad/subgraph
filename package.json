@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "verify": "npx ts-node ./src/verify.ts"
+    "snapshot": "npx ts-node ./src/snapshot.ts"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@types/node": "^20.11.17",
-    "graphql": "^16.8.1",
-    "graphql-request": "^6.1.0",
+    "@urql/core": "^4.2.3",
+    "dotenv": "^16.4.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
     "viem": "^2.7.9"

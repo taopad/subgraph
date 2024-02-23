@@ -1,7 +1,6 @@
-import { createPublicClient, http } from "viem"
+import { rpc } from "../../config"
 import { mainnet } from "viem/chains"
-
-const rpcurl = "https://mainnet.infura.io/v3/32684b6fde26442b8a236b23cf3b171d"
+import { createPublicClient, http } from "viem"
 
 const contract = {
     address: "0x5483DC6abDA5F094865120B2D251b5744fc2ECB5" as `0x${string}`,
@@ -49,10 +48,10 @@ const contract = {
 
 const publicClient = createPublicClient({
     chain: mainnet,
-    transport: http(rpcurl)
+    transport: http(rpc.url)
 })
 
-export const getFinalizedBlock = () => {
+export const getLastFinalizedBlock = () => {
     return publicClient.getBlock({
         blockTag: "finalized",
     })
